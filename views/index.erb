@@ -30,12 +30,29 @@ h1.title {
   float: right;
 }
 
+.pull-right > span {
+  display: inline-block;
+  line-height: 24px;
+}
+
+.pull-right > a {
+  line-height: 24px;
+  color: white;
+}
+
+.pull-right > img {
+  height: 24px;
+  margin-right: 10px;
+}
+
   </style>
 </head>
 <body>
   <header>
     <h1 class="title">pictograph</h1>
-    <a class="pull-right" href="<%= auth_url %>">Sign Up</a>
+    <div class="pull-right">
+      <a href="<%= auth_url %>">Sign Up</a>
+    </div>
   </header>
 </body>
 </html>

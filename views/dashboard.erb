@@ -1,6 +1,7 @@
 <html>
 <head>
   <title>pictograph</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
   <style type="text/css">
 
 html, body {
@@ -18,10 +19,34 @@ h1, h2, h3, h4, h5 {
 header {
   padding: 20px;
   background-color: rgb(200, 200, 200);
+  margin-bottom: 10px;
 }
 
 h1.title {
   margin-bottom: 0;
+  display: inline-block;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.pull-right {
+  display: inline-block;
+  float: right;
+}
+
+.pull-right > span {
+  display: inline-block;
+  line-height: 24px;
+}
+
+.pull-right > a {
+  line-height: 24px;
+  color: white;
+}
+
+.pull-right > img {
+  height: 24px;
+  margin-right: 10px;
 }
 
   </style>
@@ -29,6 +54,51 @@ h1.title {
 <body>
   <header>
     <h1 class="title">pictograph</h1>
+    <div class="pull-right">
+      <img src="<%= profile_picture %>">
+      <span><%= username %></span>
+    </div>
   </header>
+
+  <div class="col-sm-3">
+    <h2>Follows (<%= follows.count %>)</h2>
+    <ul>
+      <% follows.each do |follow| %>
+      <li>
+        <span><%= follow["username"] %></span>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-sm-3">
+    <h2>Followers (<%= followers.count %>)</h2>
+    <ul>
+      <% followers.each do |follower| %>
+      <li>
+        <span><%= follower["username"] %></span>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-sm-3">
+    <h2>Unrequited (<%= unrequited.count %>) :o</h2>
+    <ul>
+      <% unrequited.each do |un| %>
+      <li>
+        <span><%= un["username"] %></span>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-sm-3">
+    <h2>Follow Back! (<%= not_following.count %>) :(</h2>
+    <ul>
+      <% not_following.each do |nf| %>
+      <li>
+        <span><%= nf["username"] %></span>
+      </li>
+      <% end %>
+    </ul>
+  </div>
 </body>
 </html>
